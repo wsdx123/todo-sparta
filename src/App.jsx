@@ -23,6 +23,16 @@ function App() {
     setTodoText('')
   }
 
+  const handleRemove = (id) => {
+    setTodo((prev) => prev.filter((el) => el.id !== id))
+  }
+  const handleDone = (id) => {
+    const findIdx = todo.findIndex((el) => el.id === id)
+    const copyTodo = [...todo]
+    copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
+    setTodo(copyTodo)
+  }
+
   // console.log(todo)
 
   return (
@@ -39,24 +49,47 @@ function App() {
             <input value={todoText} onChange={handleText} />
           </div>
           <button type='submit' className={styles.submitBtn}>
-            추가
+            추가하기
           </button>
         </form>
         <h3>working...</h3>
         <div className={styles.working}>
-          {todo.map((el) => (
-            <div key={el.id} className={styles.card}>
-              <h4>{el.todoTitle}</h4>
-              <p>{el.todoText}</p>
-              <div>
-                <button type='button'>완료</button>
-                <button type='button'>삭제</button>
+          {todo
+            .filter((el) => !el.isDone)
+            .map((el) => (
+              <div key={el.id} className={styles.card}>
+                <h4>{el.todoTitle}</h4>
+                <p>{el.todoText}</p>
+                <div>
+                  <button type='button' onClick={() => handleRemove(el.id)}>
+                    삭제
+                  </button>
+                  <button type='button' onClick={() => handleDone(el.id)}>
+                    완료
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
         <h3>완료</h3>
-        <div></div>
+        <div className={styles.working}>
+          {todo
+            .filter((el) => el.isDone)
+            .map((el) => (
+              <div key={el.id} className={styles.card}>
+                <h4>{el.todoTitle}</h4>
+                <p>{el.todoText}</p>
+                <div>
+                  <button type='button' onClick={() => handleRemove(el.id)}>
+                    삭제
+                  </button>
+                  <button type='button' onClick={() => handleDone(el.id)}>
+                    취소
+                  </button>
+                </div>
+              </div>
+            ))}
+        </div>
       </main>
     </div>
   )
