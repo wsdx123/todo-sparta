@@ -1,4 +1,4 @@
-import styles from './Card.module.css'
+import styles from 'components/card/Card.module.css'
 
 function Card({ props, handleRemove, handleDone, children }) {
   return (

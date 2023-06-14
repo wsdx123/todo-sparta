@@ -1,4 +1,4 @@
-import styles from './TodoForm.module.css'
+import styles from 'components/todoForm/TodoForm.module.css'
 
 function TodoForm({ title, text, handleSubmit, handleText, handleTitle }) {
   return (
