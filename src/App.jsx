@@ -23,7 +23,7 @@ function App() {
     setTodoText('')
   }
 
-  console.log(todo)
+  // console.log(todo)
 
   return (
     <div className={styles.container}>
@@ -38,12 +38,25 @@ function App() {
             <span>내용</span>
             <input value={todoText} onChange={handleText} />
           </div>
-          <button className={styles.submitBtn}>추가</button>
+          <button type='submit' className={styles.submitBtn}>
+            추가
+          </button>
         </form>
-        <div>
-          <h3>working...</h3>
+        <h3>working...</h3>
+        <div className={styles.working}>
+          {todo.map((el) => (
+            <div key={el.id} className={styles.card}>
+              <h4>{el.todoTitle}</h4>
+              <p>{el.todoText}</p>
+              <div>
+                <button type='button'>완료</button>
+                <button type='button'>삭제</button>
+              </div>
+            </div>
+          ))}
         </div>
-        <div>완료</div>
+        <h3>완료</h3>
+        <div></div>
       </main>
     </div>
   )
