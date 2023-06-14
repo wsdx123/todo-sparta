@@ -1,0 +1,31 @@
+.form {
+  background-color: brown;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form > div {
+  display: flex;
+  align-items: center;
+}
+.form > div > span {
+  margin-right: 5px;
+}
+.form > div > input {
+  margin-right: 20px;
+  border-radius: 8px;
+  border: none;
+  height: 25px;
+}
+
+.submitBtn {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 30px 5px 30px;
+
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}

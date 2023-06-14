@@ -1,5 +1,9 @@
-import styles from 'App.module.css'
 import { useState } from 'react'
+
+import TodoForm from 'components/todoForm'
+import Card from 'components/card'
+
+import styles from 'App.module.css'
 
 function App() {
   const [todoTitle, setTodoTitle] = useState('')
@@ -39,36 +43,23 @@ function App() {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1>TodoList</h1>
+        <TodoForm
+          title={todoTitle}
+          text={todoText}
+          handleSubmit={handleSubmit}
+          handleText={handleText}
+          handleTitle={handleTitle}
+        />
       </header>
       <main className={styles.main}>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <div>
-            <span>제목</span>
-            <input value={todoTitle} onChange={handleTitle} />
-            <span>내용</span>
-            <input value={todoText} onChange={handleText} />
-          </div>
-          <button type='submit' className={styles.submitBtn}>
-            추가하기
-          </button>
-        </form>
         <h3>working...</h3>
         <div className={styles.working}>
           {todo
             .filter((el) => !el.isDone)
             .map((el) => (
-              <div key={el.id} className={styles.card}>
-                <h4>{el.todoTitle}</h4>
-                <p>{el.todoText}</p>
-                <div>
-                  <button type='button' onClick={() => handleRemove(el.id)}>
-                    삭제
-                  </button>
-                  <button type='button' onClick={() => handleDone(el.id)}>
-                    완료
-                  </button>
-                </div>
-              </div>
+              <Card props={el} handleDone={handleDone} handleRemove={handleRemove}>
+                완료
+              </Card>
             ))}
         </div>
         <h3>완료</h3>
@@ -76,18 +67,9 @@ function App() {
           {todo
             .filter((el) => el.isDone)
             .map((el) => (
-              <div key={el.id} className={styles.card}>
-                <h4>{el.todoTitle}</h4>
-                <p>{el.todoText}</p>
-                <div>
-                  <button type='button' onClick={() => handleRemove(el.id)}>
-                    삭제
-                  </button>
-                  <button type='button' onClick={() => handleDone(el.id)}>
-                    취소
-                  </button>
-                </div>
-              </div>
+              <Card props={el} handleDone={handleDone} handleRemove={handleRemove}>
+                취소
+              </Card>
             ))}
         </div>
       </main>

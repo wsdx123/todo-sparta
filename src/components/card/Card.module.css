@@ -1,0 +1,21 @@
+.card {
+  background-color: aqua;
+  width: 180px;
+  height: 150px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cardBtn {
+  display: flex;
+}
+
+.cardBtn > button {
+  width: 100%;
+}
+.cardBtn > button:first-child {
+  margin-right: 10px;
+}
