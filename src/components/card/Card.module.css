@@ -1,13 +1,15 @@
 .card {
-  background-color: aqua;
+  background-color: black;
   width: 180px;
   height: 150px;
   margin: 10px;
   padding: 10px;
+  border: 1px solid aqua;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: white;
 }
 .cardBtn {
   display: flex;
@@ -15,7 +17,13 @@
 
 .cardBtn > button {
   width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgb(42, 229, 42);
+  font-weight: 800;
+  cursor: pointer;
 }
 .cardBtn > button:first-child {
   margin-right: 10px;
+  border: 1px solid red;
 }

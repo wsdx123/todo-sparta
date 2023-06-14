@@ -37,8 +37,6 @@ function App() {
     setTodo(copyTodo)
   }
 
-  // console.log(todo)
-
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -57,17 +55,17 @@ function App() {
           {todo
             .filter((el) => !el.isDone)
             .map((el) => (
-              <Card props={el} handleDone={handleDone} handleRemove={handleRemove}>
+              <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
                 완료
               </Card>
             ))}
         </div>
-        <h3>완료</h3>
+        <h3>Done !</h3>
         <div className={styles.working}>
           {todo
             .filter((el) => el.isDone)
             .map((el) => (
-              <Card props={el} handleDone={handleDone} handleRemove={handleRemove}>
+              <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
                 취소
               </Card>
             ))}
