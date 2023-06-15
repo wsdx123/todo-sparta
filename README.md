@@ -5,7 +5,7 @@
 
 ## 🚀 배포
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f551df19-8610-429e-95b3-696a530b21e8/deploy-status)](https://app.netlify.com/sites/todo-sparta-jy/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f551df19-8610-429e-95b3-696a530b21e8/deploy-status)](https://todo-sparta-jy.netlify.app/)
 
 <br>
 <br>
@@ -30,6 +30,9 @@ yarn install && yarn start
 2일차) 대강의 구조잡기. todo작성, 삭제/작업 상태변경 기능 구현. 컴포넌트 분리
 
 3일차) localstorage를 활용한 새로고침시 todo 보존기능 구현. refactoring 작업. 배포 및 readme 작성.
+
+<br>
+<br>
 
 ## 💡 구현 내용
 
