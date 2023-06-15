@@ -60,8 +60,6 @@ yarn install && yarn start
 
 - 변경된 상태를 localstorage에 넣었을 때, 변경된 state값이 바로 들어가지 않았습니다. 새로운 변수에 변경될 state를 임시로 할당 후, state 와 localstorage 각각 뿌려주는 방식으로 해결했습니다.
 
-<br>
-
 ### 2. 초기 localstorage에 값이 존재하지 않을때 에러발생
 
 - 새로고침 시 todo가 남아있도록 하기 위해 useEffect를 사용했습니다. 하지만 최초에 localstorage에 아무런 key-value가 없다면 동작하지 않는 문제가 있었습니다. 이는 useEffect 내부에 localstorage에 아무런 값이 없다면 리턴하는 조건문을 달아줘 해결했습니다.
