@@ -22,9 +22,9 @@ function App() {
       alert('title과 text를 모두 입력하시오')
       return
     }
-    const tmp = [...todo, { id: Math.floor(e.timeStamp), todoTitle, todoText, isDone: false }]
-    window.localStorage.setItem('todolist', JSON.stringify(tmp))
-    setTodo(tmp)
+    const copyTodo = [...todo, { id: Math.floor(e.timeStamp), todoTitle, todoText, isDone: false }]
+    window.localStorage.setItem('todolist', JSON.stringify(copyTodo))
+    setTodo(copyTodo)
     setTodoTitle('')
     setTodoText('')
   }
@@ -35,7 +35,10 @@ function App() {
   }, [])
 
   const handleRemove = (id) => {
-    setTodo((prev) => prev.filter((el) => el.id !== id))
+    const getTodo = JSON.parse(window.localStorage.getItem('todolist'))
+    const filteredTodo = getTodo.filter((el) => el.id !== id)
+    window.localStorage.setItem('todolist', JSON.stringify(filteredTodo))
+    setTodo(filteredTodo)
   }
   const handleDone = (id) => {
     const findIdx = todo.findIndex((el) => el.id === id)
