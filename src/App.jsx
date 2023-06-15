@@ -28,22 +28,23 @@ function App() {
     setTodoTitle('')
     setTodoText('')
   }
-  // console.log(todo)
 
   useEffect(() => {
+    if (!window.localStorage.getItem('todolist')) return
     setTodo(JSON.parse(window.localStorage.getItem('todolist')))
   }, [])
 
   const handleRemove = (id) => {
-    const getTodo = JSON.parse(window.localStorage.getItem('todolist'))
-    const filteredTodo = getTodo.filter((el) => el.id !== id)
+    const filteredTodo = todo.filter((el) => el.id !== id)
     window.localStorage.setItem('todolist', JSON.stringify(filteredTodo))
     setTodo(filteredTodo)
   }
+
   const handleDone = (id) => {
     const findIdx = todo.findIndex((el) => el.id === id)
     const copyTodo = [...todo]
     copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
+    window.localStorage.setItem('todolist', JSON.stringify(copyTodo))
     setTodo(copyTodo)
   }
 
