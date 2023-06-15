@@ -17,6 +17,11 @@
   border-radius: 10px 10px 0px 0px;
   color: white;
 }
+.header > h1 {
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: xx-large;
+}
 
 .main {
   width: 100%;
@@ -25,7 +30,9 @@
   flex-direction: column;
 }
 .main > h3 {
-  margin-left: 10px;
+  margin: 20px 0 20px 10px;
+  font-weight: bold;
+  font-size: large;
 }
 .working {
   display: flex;
