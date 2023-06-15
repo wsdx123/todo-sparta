@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import TodoForm from 'components/todoForm'
 import Card from 'components/card'
@@ -22,18 +22,29 @@ function App() {
       alert('title과 text를 모두 입력하시오')
       return
     }
-    setTodo((prev) => [...prev, { id: Math.floor(e.timeStamp), todoTitle, todoText, isDone: false }])
+    const copyTodo = [...todo, { id: Math.floor(e.timeStamp), todoTitle, todoText, isDone: false }]
+    window.localStorage.setItem('todolist', JSON.stringify(copyTodo))
+    setTodo(copyTodo)
     setTodoTitle('')
     setTodoText('')
   }
 
+  useEffect(() => {
+    if (!window.localStorage.getItem('todolist')) return
+    setTodo(JSON.parse(window.localStorage.getItem('todolist')))
+  }, [])
+
   const handleRemove = (id) => {
-    setTodo((prev) => prev.filter((el) => el.id !== id))
+    const filteredTodo = todo.filter((el) => el.id !== id)
+    window.localStorage.setItem('todolist', JSON.stringify(filteredTodo))
+    setTodo(filteredTodo)
   }
+
   const handleDone = (id) => {
     const findIdx = todo.findIndex((el) => el.id === id)
     const copyTodo = [...todo]
     copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
+    window.localStorage.setItem('todolist', JSON.stringify(copyTodo))
     setTodo(copyTodo)
   }
 
@@ -52,23 +63,25 @@ function App() {
       <main className={styles.main}>
         <h3>working...</h3>
         <div className={styles.working}>
-          {todo
-            .filter((el) => !el.isDone)
-            .map((el) => (
-              <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
-                완료
-              </Card>
-            ))}
+          {todo &&
+            todo
+              .filter((el) => !el.isDone)
+              .map((el) => (
+                <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
+                  완료
+                </Card>
+              ))}
         </div>
         <h3>Done !</h3>
         <div className={styles.working}>
-          {todo
-            .filter((el) => el.isDone)
-            .map((el) => (
-              <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
-                취소
-              </Card>
-            ))}
+          {todo &&
+            todo
+              .filter((el) => el.isDone)
+              .map((el) => (
+                <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
+                  취소
+                </Card>
+              ))}
         </div>
       </main>
     </div>

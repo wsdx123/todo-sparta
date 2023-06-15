@@ -11,6 +11,9 @@
   justify-content: space-between;
   color: white;
 }
+.card > h4 {
+  margin: 0;
+}
 .cardBtn {
   display: flex;
 }
