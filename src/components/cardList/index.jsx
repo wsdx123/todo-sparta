@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 function CardList({ isDone }) {
   const data = useSelector((state) => state.todos)
-
+  console.log(data)
   return (
     <div>
       {data
