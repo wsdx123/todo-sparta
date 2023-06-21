@@ -1,8 +1,12 @@
 import styles from 'components/card/Card.module.css'
+import Modal from 'components/modal'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteTodo, doneTodo } from 'redux/modules/todos'
 
 function Card({ props, children }) {
+  const [openModal, setOpenModal] = useState(false)
+
   const dispatch = useDispatch()
 
   const handleRemove = () => {
@@ -22,6 +26,10 @@ function Card({ props, children }) {
     dispatch(doneTodo(props.id))
   }
 
+  const handleModal = () => {
+    setOpenModal(true)
+  }
+
   return (
     <div key={props.id} className={styles.card}>
       <h4>{props.todoTitle}</h4>
@@ -30,10 +38,14 @@ function Card({ props, children }) {
         <button type='button' onClick={handleRemove}>
           삭제
         </button>
+        <button type='button' onClick={handleModal}>
+          수정
+        </button>
         <button type='button' onClick={handleDone}>
           {children}
         </button>
       </div>
+      {openModal && <Modal setOpenModal={setOpenModal} />}
     </div>
   )
 }

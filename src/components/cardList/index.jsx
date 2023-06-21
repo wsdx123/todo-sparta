@@ -1,12 +1,13 @@
 import Card from 'components/card'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import styles from 'components/cardList/CardList.module.css'
 
 function CardList({ isDone }) {
   const data = useSelector((state) => state.todos)
   console.log(data)
   return (
-    <div>
+    <div className={styles.working}>
       {data
         .filter((el) => el.isDone === isDone)
         .map((el) => (
