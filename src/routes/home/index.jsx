@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react'
 import TodoForm from 'components/todoForm'
 import Card from 'components/card'
 
-import styles from 'App.module.css'
+import styles from 'routes/home/Home.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTodo } from 'redux/modules/todos'
 import CardList from 'components/cardList'
 
-function App() {
+function Home() {
   const [todoTitle, setTodoTitle] = useState('')
   const [todoText, setTodoText] = useState('')
   const [todo, setTodo] = useState([])
@@ -58,32 +58,15 @@ function App() {
       </header>
       <main className={styles.main}>
         <h3>working...</h3>
-        <div className={styles.working}>
-          {/* {todo &&
-            todo
-              .filter((el) => !el.isDone)
-              .map((el) => (
-                <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
-                  완료
-                </Card>
-              ))} */}
-          <CardList isDone={false} />
-        </div>
+
+        <CardList isDone={false} />
+
         <h3>Done !</h3>
-        <div className={styles.working}>
-          {/* {todo &&
-            todo
-              .filter((el) => el.isDone)
-              .map((el) => (
-                <Card key={el.id} props={el} handleDone={handleDone} handleRemove={handleRemove}>
-                  취소
-                </Card>
-              ))} */}
-          <CardList isDone={true} />
-        </div>
+
+        <CardList isDone={true} />
       </main>
     </div>
   )
 }
 
-export default App
+export default Home

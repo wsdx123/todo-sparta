@@ -2,6 +2,7 @@ import styles from 'components/card/Card.module.css'
 import Modal from 'components/modal'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { deleteTodo, doneTodo } from 'redux/modules/todos'
 
 function Card({ props, children }) {
@@ -32,18 +33,23 @@ function Card({ props, children }) {
 
   return (
     <div key={props.id} className={styles.card}>
-      <h4>{props.todoTitle}</h4>
+      <h4>
+        <Link to={`card/${props.id}`}>{props.todoTitle}</Link>
+      </h4>
       <p>{props.todoText}</p>
       <div className={styles.cardBtn}>
-        <button type='button' onClick={handleRemove}>
-          삭제
-        </button>
-        <button type='button' onClick={handleModal}>
-          수정
-        </button>
-        <button type='button' onClick={handleDone}>
-          {children}
-        </button>
+        <div>
+          <button type='button' onClick={handleRemove}>
+            삭제
+          </button>
+          <button type='button' onClick={handleModal}>
+            수정
+          </button>
+          <button type='button' onClick={handleDone}>
+            {children}
+          </button>
+        </div>
+        {/* <Link to='card/:id'>상세보기</Link> */}
       </div>
       {openModal && <Modal setOpenModal={setOpenModal} cardId={props.id} />}
     </div>

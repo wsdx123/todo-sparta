@@ -5,7 +5,7 @@ import styles from 'components/cardList/CardList.module.css'
 
 function CardList({ isDone }) {
   const data = useSelector((state) => state.todos)
-  console.log(data)
+  // console.log(data)
   return (
     <div className={styles.working}>
       {data

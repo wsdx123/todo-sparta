@@ -16,15 +16,21 @@
   font-size: large;
   margin-bottom: 10px;
 }
+
 .card > p {
   word-break: break-all;
 }
 .cardBtn {
   display: flex;
-  margin-top: 10px;
+  flex-direction: column;
+  margin: 10px 0;
+}
+.cardBtn > div {
+  display: flex;
+  margin: 10px 0;
 }
 
-.cardBtn > button {
+.cardBtn > div > button {
   width: 100%;
   background-color: white;
   border-radius: 5px;
@@ -32,11 +38,11 @@
   font-weight: 800;
   cursor: pointer;
 }
-.cardBtn > button:first-child {
+.cardBtn > div > button:first-child {
   margin-right: 10px;
   border: 1px solid red;
 }
-.cardBtn > button:nth-child(2) {
+.cardBtn > div > button:nth-child(2) {
   margin-right: 10px;
   border: 1px solid blue;
 }
