@@ -45,7 +45,7 @@ function Card({ props, children }) {
           {children}
         </button>
       </div>
-      {openModal && <Modal setOpenModal={setOpenModal} />}
+      {openModal && <Modal setOpenModal={setOpenModal} cardId={props.id} />}
     </div>
   )
 }

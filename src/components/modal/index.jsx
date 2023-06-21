@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import styles from 'components/modal/Modal.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { modifyTodo } from 'redux/modules/todos'
 
-function Modal({ setOpenModal }) {
-  const [title, setTitle] = useState('')
-  const [text, setText] = useState('')
-  const [modTodo, setModTodo] = useState({})
+function Modal({ setOpenModal, cardId }) {
+  const data = useSelector((state) => state.todos.find((el) => el.id === cardId))
 
-  const handleModal = () => {
-    setOpenModal(false)
-  }
+  const [title, setTitle] = useState(data.todoTitle)
+  const [text, setText] = useState(data.todoText)
+
+  const dispatch = useDispatch()
 
   const handleTitle = (e) => {
     setTitle(e.target.value)
@@ -18,9 +19,13 @@ function Modal({ setOpenModal }) {
     setText(e.target.value)
   }
 
+  const handleModal = () => {
+    setOpenModal(false)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    setModTodo({ title, text })
+    dispatch(modifyTodo({ title, text, cardId }))
     setOpenModal(false)
   }
 

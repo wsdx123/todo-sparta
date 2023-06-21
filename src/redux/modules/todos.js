@@ -1,6 +1,7 @@
 const ADD_TODO = 'ADD_TODO'
 const DELETE_TODO = 'DELETE_TODO'
 const DONE_TODO = 'DONE_TODO'
+const MODIFY_TODO = 'MODIFY_TODO'
 
 export const addTodo = (payload) => {
   return {
@@ -23,6 +24,13 @@ export const doneTodo = (payload) => {
   }
 }
 
+export const modifyTodo = (payload) => {
+  return {
+    type: MODIFY_TODO,
+    payload: payload,
+  }
+}
+
 const initalState = []
 
 const todos = (state = initalState, action) => {
@@ -36,6 +44,13 @@ const todos = (state = initalState, action) => {
       const copyTodo = [...state]
       copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
       return (state = copyTodo)
+    case MODIFY_TODO:
+      const findIdx1 = state.findIndex((el) => el.id === action.payload.cardId)
+      const copyTodo1 = [...state]
+      copyTodo1[findIdx1].todoTitle = action.payload.title
+      copyTodo1[findIdx1].todoText = action.payload.text
+
+      return (state = copyTodo1)
     default:
       return state
   }
