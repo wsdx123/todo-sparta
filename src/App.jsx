@@ -39,14 +39,6 @@ function App() {
     setTodoText('')
   }
 
-  // const handleDone = (id) => {
-  //   const findIdx = todo.findIndex((el) => el.id === id)
-  //   const copyTodo = [...todo]
-  //   copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
-  //   // window.localStorage.setItem('todolist', JSON.stringify(copyTodo))
-  //   setTodo(copyTodo)
-  // }
-
   // useEffect(() => {
   //   if (!window.localStorage.getItem('todolist')) return
   //   setTodo(JSON.parse(window.localStorage.getItem('todolist')))

@@ -1,5 +1,6 @@
 const ADD_TODO = 'ADD_TODO'
 const DELETE_TODO = 'DELETE_TODO'
+const DONE_TODO = 'DONE_TODO'
 
 export const addTodo = (payload) => {
   return {
@@ -15,6 +16,13 @@ export const deleteTodo = (payload) => {
   }
 }
 
+export const doneTodo = (payload) => {
+  return {
+    type: DONE_TODO,
+    payload: payload,
+  }
+}
+
 const initalState = []
 
 const todos = (state = initalState, action) => {
@@ -23,6 +31,11 @@ const todos = (state = initalState, action) => {
       return (state = [...state, action.payload])
     case DELETE_TODO:
       return (state = state.filter((el) => el.id !== action.payload))
+    case DONE_TODO:
+      const findIdx = state.findIndex((el) => el.id === action.payload)
+      const copyTodo = [...state]
+      copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
+      return (state = copyTodo)
     default:
       return state
   }
