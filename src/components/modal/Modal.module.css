@@ -1,0 +1,46 @@
+.container {
+  width: 400px;
+  height: 300px;
+  background-color: lightgray;
+  z-index: 99;
+  position: absolute;
+  top: calc(50% - 160px);
+  left: calc(50% - 210px);
+  padding: 10px;
+  border-radius: 10px;
+}
+.closeBtn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  left: calc(100% - 15px);
+  border: none;
+  border-radius: 50%;
+  font-size: large;
+  cursor: pointer;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  z-index: 10;
+  opacity: 0.75;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.form > input {
+  margin-bottom: 10px;
+}
+.form > span {
+  margin-bottom: 5px;
+}
