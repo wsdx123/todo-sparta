@@ -1,0 +1,36 @@
+.container {
+  width: 400px;
+  height: 100%;
+  border: 1px solid rgb(230, 225, 225);
+  border-radius: 10px;
+  background-color: rgb(244, 239, 239);
+  margin-top: 200px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgb(230, 225, 225);
+}
+.header > h2 {
+  font-size: x-large;
+}
+.header > button {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid rgb(230, 225, 225);
+  border-radius: 10px;
+  font-size: large;
+  cursor: pointer;
+}
+
+.content {
+  padding: 20px;
+}
+.content > h3 {
+  font-size: larger;
+  font-weight: 600;
+  margin-bottom: 20px;
+}

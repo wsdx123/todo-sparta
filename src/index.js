@@ -1,13 +1,14 @@
-import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
+import React from 'react'
+
+import store from 'redux/config/configStore'
+import Detail from 'routes/detail'
+import Home from 'routes/home'
 
 import 'index.css'
 import 'reset.css'
-import { Provider } from 'react-redux'
-import store from 'redux/config/configStore'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Detail from 'routes/detail'
-import Home from 'routes/home'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

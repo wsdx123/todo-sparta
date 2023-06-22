@@ -1,32 +1,32 @@
-const ADD_TODO = 'ADD_TODO'
-const DELETE_TODO = 'DELETE_TODO'
-const DONE_TODO = 'DONE_TODO'
-const MODIFY_TODO = 'MODIFY_TODO'
+const ADD = 'todos/ADD'
+const DELETE = 'todos/DELETE'
+const DONE = 'todos/DONE'
+const UPDATE = 'todos/UPDATE'
 
 export const addTodo = (payload) => {
   return {
-    type: ADD_TODO,
+    type: ADD,
     payload: payload,
   }
 }
 
 export const deleteTodo = (payload) => {
   return {
-    type: DELETE_TODO,
+    type: DELETE,
     payload: payload,
   }
 }
 
 export const doneTodo = (payload) => {
   return {
-    type: DONE_TODO,
+    type: DONE,
     payload: payload,
   }
 }
 
-export const modifyTodo = (payload) => {
+export const updateTodo = (payload) => {
   return {
-    type: MODIFY_TODO,
+    type: UPDATE,
     payload: payload,
   }
 }
@@ -35,21 +35,20 @@ const initalState = []
 
 const todos = (state = initalState, action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case ADD:
       return (state = [...state, action.payload])
-    case DELETE_TODO:
+    case DELETE:
       return (state = state.filter((el) => el.id !== action.payload))
-    case DONE_TODO:
+    case DONE:
       const findIdx = state.findIndex((el) => el.id === action.payload)
       const copyTodo = [...state]
       copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
       return (state = copyTodo)
-    case MODIFY_TODO:
+    case UPDATE:
       const findIdx1 = state.findIndex((el) => el.id === action.payload.cardId)
       const copyTodo1 = [...state]
       copyTodo1[findIdx1].todoTitle = action.payload.title
       copyTodo1[findIdx1].todoText = action.payload.text
-
       return (state = copyTodo1)
     default:
       return state

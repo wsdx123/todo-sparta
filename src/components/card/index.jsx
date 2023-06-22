@@ -1,29 +1,21 @@
-import styles from 'components/card/Card.module.css'
-import Modal from 'components/modal'
-import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+
 import { deleteTodo, doneTodo } from 'redux/modules/todos'
+import Modal from 'components/modal'
+
+import styles from 'components/card/Card.module.css'
 
 function Card({ props, children }) {
   const [openModal, setOpenModal] = useState(false)
-
   const dispatch = useDispatch()
 
   const handleRemove = () => {
-    // const filteredTodo = todo.filter((el) => el.id !== id)
-    // window.localStorage.setItem('todolist', JSON.stringify(filteredTodo))
-    // setTodo(filteredTodo)
-
     dispatch(deleteTodo(props.id))
   }
 
   const handleDone = () => {
-    // const findIdx = todo.findIndex((el) => el.id === id)
-    // const copyTodo = [...todo]
-    // copyTodo[findIdx].isDone = !copyTodo[findIdx].isDone
-    // // window.localStorage.setItem('todolist', JSON.stringify(copyTodo))
-    // setTodo(copyTodo)
     dispatch(doneTodo(props.id))
   }
 
@@ -49,7 +41,6 @@ function Card({ props, children }) {
             {children}
           </button>
         </div>
-        {/* <Link to='card/:id'>상세보기</Link> */}
       </div>
       {openModal && <Modal setOpenModal={setOpenModal} cardId={props.id} />}
     </div>
